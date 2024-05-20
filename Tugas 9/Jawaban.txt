@@ -1,0 +1,62 @@
+Soal 1 Membuat Database
+=> CREATE DATABASE library;
+
+Soal 2 Membuat Table di Dalam Database
+=> Table users
+CREATE TABLE users(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    name varchar(255),
+    email varchar (255),
+    password varchar (255)
+);
+=> Table categories
+CREATE TABLE categories(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    name varchar(255)
+);
+=>Table bookss
+CREATE TABLE books(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    title varchar(255),
+    summary text,
+    stock int,
+	categories_id int,
+    FOREIGN KEY(categories_id) REFERENCES categories(id)
+);
+
+Soal 3 Memasukkan Data pada Table
+=> Insert table users
+insert into users(name, email, password) VALUES (
+"Muhammad Galurade Maghfirah", "mgalurade21@gmail.com", "gal2103"),
+ ("Jane Doe", "jane@doe.com" , "jenita123");
+
+=>Insert table categories
+INSERT INTO categories(name) VALUES (
+    "Novel"),
+    ("Manga"),
+    ("Comic"),
+    ("History"),
+    ("IT");
+
+=>Insert table books
+INSERT INTO books(title, summary, stock, categories_id) VALUES (
+    "One Piece", "The series focuses on Monkey D Luffy, a young man made of rubber", 50, 2),
+    ("Laskar Pelangi", "Belitung is known for its richness in tin, making it one of Indonesia's richest islands", 25, 1),
+    ("Galurade", "Mitsuha Miyamizu, a high school girl living in the fictional town of Itomori in Gifu Prefecture's", 15, 2);
+
+Soal 4 Mengambil Data dari Database
+a. Mengambil data users
+=>SELECT id, name, email FROM users;
+
+b. Mengambil data Books
+-Mengambil data table books yang memiliki stock di atas 20 buah.
+=>SELECT * FROM books WHERE stock > 20;
+-Mengambil table books yang memiliki name serupa atau mirip (like) dengan kata kunci “one”, “pela”, atau “ame” (pilih salah satu saja).
+=>SELECT * FROM books WHERE title LIKE "one%";
+
+c. Menampilkan data items books dengan categories
+=>SELECT books.title, books.summary, books.stock, books.categories_id, categories.name AS category
+FROM books INNER JOIN categories on books.categories_id = categories.id;
+
+Soal 5 Mengubah Data dari Database
+=>UPDATE books set stock=30 WHERE id = 1;
