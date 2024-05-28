@@ -8,7 +8,7 @@ class AuthController extends Controller
 {
     public function daftar()
     {
-        return view('register');
+        return view('pages.register');
     }
 
     public function welcome(Request $request)
@@ -16,6 +16,6 @@ class AuthController extends Controller
         $fname = $request->input('firstname');
         $lname = $request->input('lastname');
 
-        return view('welcome', ['fname'=> $fname, 'lname'=>$lname]);
+        return view('pages.welcome', ['fname'=> $fname, 'lname'=>$lname]);
     }
 }
